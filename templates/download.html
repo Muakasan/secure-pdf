@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!--Import Google Icon Font-->
+    <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--Import materialize.css-->
+    <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='css/materialize.min.css') }}"  media="screen,projection"/>
+
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+</head>
+
+<body>
+    <header>
+        <nav></nav>
+    </header>
+    <main>
+        <div class="section">
+            <div class="container">
+                <h1 class="header center">SafePDF</h1>
+                <div class="row center">
+                    <h4 class="header col s8 light offset-s2">Find my PDF</h4>
+                </div>
+                <br>
+                <br>
+                <input type="text" placeholder="Filename" id="filename">            
+                <input type="password" placeholder="Password" id="password">
+                <a class="waves-effect waves-light btn" id="button">Find My PDF</a>
+            </div>
+        </div>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+    </main>
+    <footer class="page-footer class">
+        <div class="container">
+        </div>
+    </footer>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/materialize.min.js') }}"></script>
+    <script>
+    $("#button").click(function(){
+        navigator.geolocation.getCurrentPosition(function(position){
+            $.ajax({
+                type: "POST",
+                url: "http://127.0.0.1:5000/downloadp",
+                data: JSON.stringify({
+                        "lat": position.coords.latitude,
+                        "long": position.coords.longitude,
+                        "filename": $("#filename").val(),
+                        "password": $("#password").val()
+                        }),
+                contentType: 'application/json;charset=UTF-8'
+            }).done(function (data) {
+                window.location.replace(data);
+            });
+        }); 
+    });
+    </script>
+</body>
+</html>
