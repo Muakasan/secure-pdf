@@ -1,3 +1,7 @@
+#Aidan San
+#muakasan@gmail.com
+#https://github.com/Muakasan/
+
 from flask import jsonify, Flask, render_template, request, send_from_directory, redirect
 from flask.ext.sqlalchemy import SQLAlchemy
 from werkzeug import secure_filename
